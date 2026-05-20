@@ -6,7 +6,7 @@ A lightweight Windows desktop application that listens to a **TwinCAT 3 PLC** vi
 
 ## The Problem
 
-TwinCAT HMI's built-in audio feature plays sound through the browser — meaning if the HMI client is closed, no audio plays. This application solves that by running as a standalone process on the Windows host, independent of any HMI session.
+TwinCAT HMI's built-in audio feature plays sound through the browser - meaning if the HMI client is closed, no audio plays. This application solves that by running as a standalone process on the Windows host, independent of any HMI session.
 
 ---
 
@@ -21,13 +21,13 @@ TwinCAT 3 PLC
     └──── ADS ────► ADS Sound Player (this app) ────► Windows Audio
 ```
 
-The app subscribes to PLC variable changes via ADS notifications — TwinCAT pushes updates instantly, no polling required. Audio plays through the standard Windows audio session, so it works regardless of HMI state.
+The app subscribes to PLC variable changes via ADS notifications - TwinCAT pushes updates instantly, no polling required. Audio plays through the standard Windows audio session, so it works regardless of HMI state.
 
 ---
 
 ## Features
 
-- GUI configuration — no editing config files manually
+- GUI configuration - no editing config files manually
 - ADS connection test with live status indicator
 - Select up to 3 WAV files with browse + preview per sound
 - Looping playback while `bSound = TRUE`, stops immediately on `FALSE`
@@ -42,8 +42,8 @@ The app subscribes to PLC variable changes via ADS notifications — TwinCAT pus
 
 ### On the development machine (to build)
 - Python 3.8+
-- [pyads](https://github.com/stlehmann/pyads) — `pip install pyads`
-- [PyInstaller](https://pyinstaller.org) — `pip install pyinstaller` (for building the exe)
+- [pyads](https://github.com/stlehmann/pyads) - `pip install pyads`
+- [PyInstaller](https://pyinstaller.org) - `pip install pyinstaller` (for building the exe)
 
 ### On the target / customer machine
 - Windows 10 or 11
@@ -60,11 +60,11 @@ Declare these two variables in your PLC program (e.g. in `MAIN`):
 ```iecst
 VAR
     bSound       : BOOL;    (* TRUE = play sound, FALSE = stop *)
-    nSoundSelect : INT := 1; (* 1, 2, or 3 — selects the WAV file *)
+    nSoundSelect : INT := 1; (* 1, 2, or 3 - selects the WAV file *)
 END_VAR
 ```
 
-Variable names are configurable in the app — the defaults above match the app's defaults.
+Variable names are configurable in the app - the defaults above match the app's defaults.
 
 ---
 
@@ -82,7 +82,7 @@ python ads_listener_gui.py
 1. Enter the **AMS Net ID** of the TwinCAT machine
    - Find it in TwinCAT: system tray icon → Properties, or XAE → System → Settings
    - For the local machine, `127.0.0.1.1.1` usually works
-2. Click **Test Connection** — confirm it shows green
+2. Click **Test Connection** - confirm it shows green
 3. Enter the PLC variable names (default: `MAIN.bSound` / `MAIN.nSoundSelect`)
 4. Browse to your WAV files for sounds 1, 2, and 3
 5. Click **▶ Test** on each sound to verify playback
@@ -155,7 +155,7 @@ sound_3 = C:\path\to\3.wav
 
 ## Notes
 
-- Only **PCM WAV** files are supported. MP3 files will not play correctly — convert them first using Audacity or any online converter.
+- Only **PCM WAV** files are supported. MP3 files will not play correctly - convert them first using Audacity or any online converter.
 - `nSoundSelect` changes take effect on the next trigger of `bSound`. If a sound is already playing and you change the selection, it will continue until stopped.
 - The ADS port `851` is the default for TwinCAT 3 PLC runtime 1. Use `852` for runtime 2, and so on.
 
