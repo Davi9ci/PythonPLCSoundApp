@@ -31,6 +31,8 @@ DEFAULTS = {
     'sound_1':    '',
     'sound_2':    '',
     'sound_3':    '',
+    'sound_4':    '',
+    'sound_5':    '',
 }
 
 
@@ -65,6 +67,8 @@ class SoundPlayerApp:
         self.cfg['Sounds']['sound_1'] = self.var_sound1.get().strip()
         self.cfg['Sounds']['sound_2'] = self.var_sound2.get().strip()
         self.cfg['Sounds']['sound_3'] = self.var_sound3.get().strip()
+        self.cfg['Sounds']['sound_4'] = self.var_sound4.get().strip()
+        self.cfg['Sounds']['sound_5'] = self.var_sound5.get().strip()
         with open(CONFIG_PATH, 'w') as f:
             self.cfg.write(f)
         self._log('Config saved.')
@@ -110,11 +114,15 @@ class SoundPlayerApp:
         self.var_sound1 = tk.StringVar(value=self.cfg.get('Sounds', 'sound_1', fallback=''))
         self.var_sound2 = tk.StringVar(value=self.cfg.get('Sounds', 'sound_2', fallback=''))
         self.var_sound3 = tk.StringVar(value=self.cfg.get('Sounds', 'sound_3', fallback=''))
+        self.var_sound4 = tk.StringVar(value=self.cfg.get('Sounds', 'sound_4', fallback=''))
+        self.var_sound5 = tk.StringVar(value=self.cfg.get('Sounds', 'sound_5', fallback=''))
 
         for idx, (label, var) in enumerate([
             ('Sound 1:', self.var_sound1),
             ('Sound 2:', self.var_sound2),
             ('Sound 3:', self.var_sound3),
+            ('Sound 4:', self.var_sound4),
+            ('Sound 5:', self.var_sound5),
         ]):
             ttk.Label(frm_snd, text=label).grid(row=idx, column=0, sticky='w', padx=6, pady=4)
             ttk.Entry(frm_snd, textvariable=var, width=42).grid(row=idx, column=1, padx=4, pady=4)
@@ -210,6 +218,8 @@ class SoundPlayerApp:
             1: self.var_sound1.get().strip(),
             2: self.var_sound2.get().strip(),
             3: self.var_sound3.get().strip(),
+            4: self.var_sound4.get().strip(),
+            5: self.var_sound5.get().strip(),
         }
         # Use a list so the nested callback can mutate it
         current_sound = [sounds.get(1, '')]

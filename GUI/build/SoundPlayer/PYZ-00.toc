@@ -1,5 +1,5 @@
 ('C:\\Users\\YonatanA\\Documents\\Yonatan\\Work\\Technical\\TwinCAT '
- 'projects\\4026\\PLC2Windowsapp\\PLC2Windowsapp\\pythonApp\\GUI\\build\\SoundPlayer\\PYZ-00.pyz',
+ 'projects\\4026\\PLC2Windowsapp\\PLC2Windowsapp\\pythonApp\\gui\\build\\SoundPlayer\\PYZ-00.pyz',
  [('__future__',
    'C:\\Users\\YonatanA\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\__future__.py',
    'PYMODULE'),
